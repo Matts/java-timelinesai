@@ -11,4 +11,5 @@ public class DiscoveredEmailSettings {
     private ResolvedServerSettings imap;
     private ResolvedServerSettings smtp;
     private String _source;
+    private EmailSettingsAppPassword appPassword;
 }

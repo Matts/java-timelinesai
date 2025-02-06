@@ -58,6 +58,8 @@ public class EmailEngineClient {
             @Override
             public void apply(RequestTemplate template) {
                 template.headerLiteral("Authorization", "Bearer " + apiKey);
+                template.headerLiteral("Accept", "application/json");
+                template.headerLiteral("Content-Type", "application/json");
             }
         }
     }
