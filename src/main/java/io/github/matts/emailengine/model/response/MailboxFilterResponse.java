@@ -1,15 +1,15 @@
 package io.github.matts.emailengine.model.response;
 
-import io.github.matts.emailengine.model.AccountEntry;
+import io.github.matts.emailengine.model.MailboxEntry;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class AccountFilterResponse extends FilterResponse {
-    private List<AccountEntry> accounts;
+public class MailboxFilterResponse {
+    private List<MailboxEntry> mailboxes;
 }

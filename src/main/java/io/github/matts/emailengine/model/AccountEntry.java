@@ -1,6 +1,6 @@
-package io.github.matts.emailengine.model.response;
+package io.github.matts.emailengine.model;
 
-import io.github.matts.emailengine.model.AccountType;
+import io.github.matts.emailengine.model.response.AccountErrorEntry;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountResponseItem {
+public class AccountEntry {
     private String account;
     private String name;
     private String email;

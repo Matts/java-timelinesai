@@ -7,6 +7,17 @@
     <groupId>io.github.matts</groupId>
     <artifactId>java-emailengine</artifactId>
     <version>0.1</version>
+    <packaging>jar</packaging>
+    <name>Java EmailEngine SDK</name>
+    <description>Java EmailEngine SDK</description>
+    <url>http://github.com/matts/java-emailengine</url>
+    <developers>
+        <developer>
+            <name>Matthew Smeets</name>
+            <email>matthew@reuzenpanda.nl</email>
+            <url>http://github.com/matts</url>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -40,5 +51,75 @@
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <scm>
+        <url>https://github.com/matts/java-emailengine</url>
+        <connection>scm:git:git@github.com:matts/java-emailengine.git</connection>
+        <developerConnection>scm:git:https://github.com/matts/java-emailengine.git</developerConnection>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <keyname>1FAC872FB4DB53BA</keyname>
+                            <gpgArguments>
+                                <arg>--batch</arg>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                                <arg>--passphrase</arg>
+                                <arg>${env.GPG_PASSPHRASE}</arg>  <!-- Ensure your passphrase is set in the environment variable GPG_PASSPHRASE -->
+                            </gpgArguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
