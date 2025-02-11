@@ -60,6 +60,7 @@ public class EmailEngineClient {
                 template.headerLiteral("Authorization", "Bearer " + apiKey);
                 template.headerLiteral("Accept", "application/json");
                 template.headerLiteral("Content-Type", "application/json");
+                template.headerLiteral("x-ee-timeout", "30000");
             }
         }
     }

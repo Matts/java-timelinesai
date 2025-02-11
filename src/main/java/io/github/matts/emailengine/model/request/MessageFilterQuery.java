@@ -1,4 +1,4 @@
-package io.github.matts.emailengine.api;
+package io.github.matts.emailengine.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

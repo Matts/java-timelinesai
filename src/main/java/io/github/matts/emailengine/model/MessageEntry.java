@@ -32,4 +32,8 @@ public class MessageEntry {
     private List<AttachmentEntry> attachments;
     private TextInfo text;
     private String preview;
+    private List<BounceEntry> bounces;
+    private boolean isAutoReply;
+    private String specialUse;
+    private String messageSpecialUse;
 }

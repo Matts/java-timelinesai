@@ -32,7 +32,7 @@ public class MessageSearchQuery {
     private String uid;
     private Integer modseq;
     private String before;
-    private String sence;
+    private String since;
     private String sentBefore;
     private String sentSince;
     private String emailId;

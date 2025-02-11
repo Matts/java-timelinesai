@@ -5,14 +5,28 @@ import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
 import io.github.matts.emailengine.api.EmailEngineApi;
-import io.github.matts.emailengine.api.MessageFilterQuery;
+import io.github.matts.emailengine.model.request.MessageFilterQuery;
+import io.github.matts.emailengine.model.request.MessageInformationQuery;
+import io.github.matts.emailengine.model.MessageEntry;
 import io.github.matts.emailengine.model.request.MessageSearchQuery;
-import io.github.matts.emailengine.model.response.AccountFilterResponse;
+import io.github.matts.emailengine.model.request.MessageUpload;
 import io.github.matts.emailengine.model.response.MessageList;
+import io.github.matts.emailengine.model.response.MessageUploadResponse;
+import io.github.matts.emailengine.model.response.SubmitMessageResponse;
 
 public interface MessageApi extends EmailEngineApi {
     @RequestLine("GET /v1/account/{accountId}/messages")
     MessageList listMessagesInternal(@Param("accountId") String accountId, @Param("path") String path, @QueryMap MessageFilterQuery queryMap);
+
+    @RequestLine("GET /v1/account/{accountId}/message/{message}")
+    MessageEntry getMessageInformation(@Param("accountId") String accountId, @Param("message") String message, @QueryMap MessageInformationQuery queryMap);
+
+    @RequestLine("POST /v1/account/{accountId}/message")
+    MessageUploadResponse uploadMessage(@Param("accountId") String accountId, MessageUpload message);
+
+    @RequestLine("POST /v1/account/{accountId}/submit")
+    SubmitMessageResponse submitMessage(@Param("accountId") String accountId, MessageUpload message);
+
 
     @RequestLine("POST /v1/account/{accountId}/search")
     MessageList searchMessagesInternal(MessageSearchQuery.Form request, @Param("accountId") String accountId, @QueryMap MessageFilterQuery queryMap);
