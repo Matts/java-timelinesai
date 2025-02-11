@@ -13,7 +13,7 @@ public class RequestAuthForm {
     private String account;
     private String name;
     private String email;
-    private boolean delegated;
+    private Boolean delegated;
     private String notifyFrom;
     private List<String> path;
     private String redirectUrl;

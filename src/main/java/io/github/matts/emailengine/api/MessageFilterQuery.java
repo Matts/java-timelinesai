@@ -12,4 +12,5 @@ import lombok.experimental.Accessors;
 public class MessageFilterQuery {
     private String cursor;
     private Integer pageSize;
+    private String path;
 }

@@ -1,8 +1,13 @@
 package io.github.matts.emailengine.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MailboxEntry {
     private String path;
     private String delimiter;
