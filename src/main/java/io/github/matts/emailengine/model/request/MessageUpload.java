@@ -3,10 +3,7 @@ package io.github.matts.emailengine.model.request;
 import io.github.matts.emailengine.model.AddressEntry;
 import io.github.matts.emailengine.model.MessageReference;
 import io.github.matts.emailengine.model.UploadAttachment;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -14,8 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-@Getter
-@Setter
+@Data
 public class MessageUpload {
     private String path;
     private List<String> flags;
