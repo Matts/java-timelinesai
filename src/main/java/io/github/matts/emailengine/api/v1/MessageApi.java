@@ -1,9 +1,6 @@
 package io.github.matts.emailengine.api.v1;
 
-import feign.FeignException;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
+import feign.*;
 import io.github.matts.emailengine.api.EmailEngineApi;
 import io.github.matts.emailengine.model.request.MessageFilterQuery;
 import io.github.matts.emailengine.model.request.MessageInformationQuery;
@@ -20,6 +17,10 @@ public interface MessageApi extends EmailEngineApi {
 
     @RequestLine("GET /v1/account/{accountId}/message/{message}")
     MessageEntry getMessageInformation(@Param("accountId") String accountId, @Param("message") String message, @QueryMap MessageInformationQuery queryMap);
+
+    @Headers("Content-Type: application/ocelot-stream")
+    @RequestLine("GET /v1/account/{accountId}/attachment/{attachment}")
+    Response getAttachment(@Param("accountId") String accountId, @Param("attachment") String attachment);
 
     @RequestLine("POST /v1/account/{accountId}/message")
     MessageUploadResponse uploadMessage(@Param("accountId") String accountId, MessageUpload message);
