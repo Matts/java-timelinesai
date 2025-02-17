@@ -16,7 +16,7 @@ public interface MessageApi extends EmailEngineApi {
     MessageList listMessagesInternal(@Param("accountId") String accountId, @Param("path") String path, @QueryMap MessageFilterQuery queryMap);
 
     @RequestLine("GET /v1/account/{accountId}/message/{message}")
-    MessageEntry getMessageInformation(@Param("accountId") String accountId, @Param("message") String message, @QueryMap MessageInformationQuery queryMap);
+    MessageEntry getMessageInformation(@Param("accountId") String accountId, @Param("message") String message, @QueryMap MessageInformationQuery queryMap) throws FeignException.NotFound;
 
     @Headers("Content-Type: application/ocelot-stream")
     @RequestLine("GET /v1/account/{accountId}/attachment/{attachment}")
@@ -27,7 +27,6 @@ public interface MessageApi extends EmailEngineApi {
 
     @RequestLine("POST /v1/account/{accountId}/submit")
     SubmitMessageResponse submitMessage(@Param("accountId") String accountId, MessageUpload message);
-
 
     @RequestLine("POST /v1/account/{accountId}/search")
     MessageList searchMessagesInternal(MessageSearchQuery.Form request, @Param("accountId") String accountId, @QueryMap MessageFilterQuery queryMap);

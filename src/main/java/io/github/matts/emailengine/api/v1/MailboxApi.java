@@ -6,6 +6,6 @@ import io.github.matts.emailengine.api.EmailEngineApi;
 import io.github.matts.emailengine.model.response.MailboxFilterResponse;
 
 public interface MailboxApi extends EmailEngineApi {
-    @RequestLine("GET /v1/account/{accountId}/mailboxes")
-    MailboxFilterResponse listMailboxes(@Param("accountId") String accountId);
+    @RequestLine("GET /v1/account/{accountId}/mailboxes?counters={counters}")
+    MailboxFilterResponse listMailboxes(@Param("accountId") String accountId, @Param("counters") boolean counters);
 }
