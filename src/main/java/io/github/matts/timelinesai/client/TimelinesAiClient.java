@@ -6,6 +6,8 @@ import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
 
+import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.Executors;
 
 public class TimelinesAiClient {
@@ -53,9 +55,22 @@ public class TimelinesAiClient {
         }
 
         public class EmailEngineAuthInterceptor implements RequestInterceptor {
+            private static final String API_KEY_PARAM = "apiKey";
+
             @Override
             public void apply(RequestTemplate template) {
-                template.headerLiteral("Authorization", "Bearer " + apiKey);
+                Map<String, Collection<String>> queries = template.queries();
+//                if (queries.containsKey(API_KEY_PARAM)) {
+//                    Collection<String> values = queries.get(API_KEY_PARAM);
+//                    if (values != null && !values.isEmpty()) {
+//                        String apiKey = values.iterator().next(); // Get first value
+//                        template.headerLiteral("Authorization", "Bearer " + apiKey);
+//                        template.query(API_KEY_PARAM, (String) null); // Remove from query params
+//                    }
+//                } else {
+//                    template.headerLiteral("Authorization", "Bearer " + apiKey);
+//                }
+
                 template.headerLiteral("Accept", "application/json");
                 template.headerLiteral("Content-Type", "application/json");
             }
