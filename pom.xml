@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.matts</groupId>
-    <artifactId>java-emailengine</artifactId>
-    <version>0.2.7</version>
+    <artifactId>java-timelinesai</artifactId>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
-    <name>Java EmailEngine SDK</name>
-    <description>Java EmailEngine SDK</description>
-    <url>http://github.com/matts/java-emailengine</url>
+    <name>Java TimelinesAI SDK</name>
+    <description>Java TimelinesAI SDK</description>
+    <url>http://github.com/matts/java-timelinesai</url>
     <developers>
         <developer>
             <name>Matthew Smeets</name>
@@ -30,6 +30,22 @@
             <artifactId>feign-jackson</artifactId>
             <version>13.5</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.20</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-exec</artifactId>
@@ -61,9 +77,9 @@
     </properties>
 
     <scm>
-        <url>https://github.com/matts/java-emailengine</url>
-        <connection>scm:git:git@github.com:matts/java-emailengine.git</connection>
-        <developerConnection>scm:git:https://github.com/matts/java-emailengine.git</developerConnection>
+        <url>https://github.com/matts/java-timelinesai</url>
+        <connection>scm:git:git@github.com:matts/java-timelinesai.git</connection>
+        <developerConnection>scm:git:https://github.com/matts/java-timelinesai.git</developerConnection>
     </scm>
 
     <build>
