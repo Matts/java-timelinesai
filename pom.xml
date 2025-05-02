@@ -6,7 +6,7 @@
 
     <groupId>io.github.matts</groupId>
     <artifactId>java-timelinesai</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.9</version>
     <packaging>jar</packaging>
     <name>Java TimelinesAI SDK</name>
     <description>Java TimelinesAI SDK</description>
@@ -116,7 +116,7 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <keyname>1FAC872FB4DB53BA</keyname>
+                            <keyname>741EC262966415C8</keyname>
                             <gpgArguments>
                                 <arg>--batch</arg>
                                 <arg>--pinentry-mode</arg>
