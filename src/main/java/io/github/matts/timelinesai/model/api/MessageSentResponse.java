@@ -13,4 +13,9 @@ public class MessageSentResponse {
     private String status;
     private String message;
     private HashMap<String,String> data;
+
+    public MessageSentResponse(String status, String message) {
+        this.status = status;
+        this.message = message;
+    }
 }

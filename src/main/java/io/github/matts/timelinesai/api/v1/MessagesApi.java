@@ -1,4 +1,6 @@
 package io.github.matts.timelinesai.api.v1;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import feign.FeignException;
 import feign.HeaderMap;
 import feign.Param;
 import io.github.matts.timelinesai.model.api.MessageSentResponse;
@@ -24,6 +26,17 @@ public interface MessagesApi extends TimelinesAiApi {
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToPhone body) {
         try {
             return sendMessageInternal(headers, body);
+        } catch (FeignException.BadRequest | FeignException.Forbidden e) {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                return mapper.readValue(e.contentUTF8(), MessageSentResponse.class);
+            } catch (Exception parseEx) {
+                parseEx.printStackTrace();
+                return null;
+            }
+        } catch (FeignException e) {
+            e.printStackTrace();
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -33,6 +46,14 @@ public interface MessagesApi extends TimelinesAiApi {
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToJid body) {
         try {
             return sendMessageInternal(headers, body);
+        } catch (FeignException.BadRequest | FeignException.Forbidden e) {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                return mapper.readValue(e.contentUTF8(), MessageSentResponse.class);
+            } catch (Exception parseEx) {
+                parseEx.printStackTrace();
+                return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
