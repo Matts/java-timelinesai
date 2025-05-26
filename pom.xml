@@ -6,7 +6,7 @@
 
     <groupId>io.github.matts</groupId>
     <artifactId>java-timelinesai</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
     <packaging>jar</packaging>
     <name>Java TimelinesAI SDK</name>
     <description>Java TimelinesAI SDK</description>

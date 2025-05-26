@@ -26,7 +26,7 @@ public interface MessagesApi extends TimelinesAiApi {
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToPhone body) {
         try {
             return sendMessageInternal(headers, body);
-        } catch (FeignException.BadRequest | FeignException.Forbidden e) {
+        } catch (FeignException.BadRequest | FeignException.Forbidden | FeignException.Unauthorized e) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 return mapper.readValue(e.contentUTF8(), MessageSentResponse.class);
@@ -46,7 +46,7 @@ public interface MessagesApi extends TimelinesAiApi {
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToJid body) {
         try {
             return sendMessageInternal(headers, body);
-        } catch (FeignException.BadRequest | FeignException.Forbidden e) {
+        } catch (FeignException.BadRequest | FeignException.Forbidden | FeignException.Unauthorized e) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 return mapper.readValue(e.contentUTF8(), MessageSentResponse.class);
