@@ -11,6 +11,7 @@ import feign.RequestLine;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
 import io.github.matts.timelinesai.request.MessageToPhone;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public interface MessagesApi extends TimelinesAiApi {
@@ -26,7 +27,7 @@ public interface MessagesApi extends TimelinesAiApi {
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToPhone body) {
         try {
             return sendMessageInternal(headers, body);
-        } catch (FeignException.BadRequest | FeignException.Forbidden | FeignException.Unauthorized e) {
+        } catch (FeignException.BadRequest | FeignException.Forbidden e) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 return mapper.readValue(e.contentUTF8(), MessageSentResponse.class);
@@ -34,6 +35,10 @@ public interface MessagesApi extends TimelinesAiApi {
                 parseEx.printStackTrace();
                 return null;
             }
+        } catch (FeignException.Unauthorized e) {
+            HashMap<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("status", "401");
+            return new MessageSentResponse("error", "Unauthorized access. Please check your API key or authentication method.", errorResponse);
         } catch (FeignException e) {
             e.printStackTrace();
             return null;
