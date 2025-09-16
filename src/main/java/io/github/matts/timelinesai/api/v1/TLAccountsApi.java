@@ -7,7 +7,7 @@ import io.github.matts.timelinesai.responses.WhatsappAccountResponse;
 
 import java.util.Map;
 
-public interface AccountsApi extends TimelinesAiApi {
+public interface TLAccountsApi extends TimelinesAiApi {
     @RequestLine("GET /integrations/api/whatsapp_accounts")
-    Object listAccounts(@HeaderMap Map<String, String> headers);
+    WhatsappAccountResponse listAccounts(@HeaderMap Map<String, String> headers);
 }

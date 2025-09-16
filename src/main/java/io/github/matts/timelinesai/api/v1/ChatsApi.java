@@ -10,8 +10,8 @@ import io.github.matts.timelinesai.responses.MessageListResponse;
 import java.util.Map;
 
 public interface ChatsApi extends TimelinesAiApi {
-    @RequestLine("GET /integrations/api/chats?page={page}")
-    ChatListResponse listChats(@HeaderMap Map<String, String> headers, @Param("page") Integer page);
+    @RequestLine("GET /integrations/api/chats?whatsapp_account_id={whatsapp_account_id}&page={page}&created_after={createdAfter}&created_before={createdBefore}")
+    ChatListResponse listChats(@HeaderMap Map<String, String> headers, @Param("whatsapp_account_id") String whatsapp_account_id, @Param("page") Integer page, @Param("createdAfter") String createdAfter, @Param("createdBefore") String createdBefore);
 
     @RequestLine("GET /integrations/api/chats/{chatId}/messages?page={page}&after_message={afterMessage}&after={after}")
     MessageListResponse listMessages(@HeaderMap Map<String, String> headers, @Param("chatId") String chatId, @Param("afterMessage") String afterMessage, @Param("after") String after, @Param("page") Integer page);
