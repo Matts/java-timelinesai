@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class MessageToJid {
     private String jid;
+    private String whatsapp_account_phone;
     private String text;
     private String file_uid;
 }

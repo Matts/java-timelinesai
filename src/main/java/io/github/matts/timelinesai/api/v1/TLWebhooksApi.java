@@ -7,11 +7,10 @@ import io.github.matts.timelinesai.api.TimelinesAiApi;
 import io.github.matts.timelinesai.model.api.WebhookInfo;
 import io.github.matts.timelinesai.model.api.WebhookListResponse;
 import io.github.matts.timelinesai.model.api.WebhookResponse;
-import io.github.matts.timelinesai.responses.ChatListResponse;
 
 import java.util.Map;
 
-public interface WebhooksApi extends TimelinesAiApi {
+public interface TLWebhooksApi extends TimelinesAiApi {
     @RequestLine("GET /integrations/api/webhooks")
     WebhookListResponse listWebhooks(@HeaderMap Map<String, String> headers);
 

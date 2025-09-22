@@ -10,13 +10,17 @@ import io.github.matts.timelinesai.responses.FileUploadResponse;
 import feign.RequestLine;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
 import io.github.matts.timelinesai.request.MessageToPhone;
+import io.github.matts.timelinesai.responses.MessageInfoResponse;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public interface MessagesApi extends TimelinesAiApi {
+public interface TLMessagesApi extends TimelinesAiApi {
     @RequestLine("POST /integrations/api/messages")
     MessageSentResponse sendMessageInternal(@HeaderMap Map<String, String> headers, MessageToPhone body);
+
+    @RequestLine("GET /integrations/api/messages/{message_uid}")
+    MessageInfoResponse getMessageDetails(@HeaderMap Map<String, String> headers, @Param("message_uid") String message_uid);
 
     @RequestLine("POST /integrations/api/messages/to_jid")
     MessageSentResponse sendMessageInternal(@HeaderMap Map<String, String> headers, MessageToJid body);
