@@ -25,7 +25,7 @@ public class MessageInfo {
     private String origin;
     private Boolean has_attachment;
     private String message_type;
-    private HashMap<String, String> reactions;
+    private ReactionData reactions;
     private HashMap<String, String> data;
     private String created_by;
 }
