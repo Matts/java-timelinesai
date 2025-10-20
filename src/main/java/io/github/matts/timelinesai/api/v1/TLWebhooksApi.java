@@ -28,7 +28,7 @@ public interface TLWebhooksApi extends TimelinesAiApi {
 
     default Boolean deleteWebhook(Map<String, String> headers, String webhookId) {
         try {
-            System.out.println(deleteWebhookInternal(headers, webhookId));
+            deleteWebhookInternal(headers, webhookId);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
