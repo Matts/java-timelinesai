@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,7 @@ public class MessageSentResponse {
     private String status;
     private String message;
     private HashMap<String,String> data;
-    private String errors;
+    private List<HashMap<String,Object>> errors;
 
     public MessageSentResponse(String status, String message) {
         this.status = status;
