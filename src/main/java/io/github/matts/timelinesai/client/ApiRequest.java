@@ -7,4 +7,10 @@ public class ApiRequest extends HashMap<String,String> {
         super();
         this.put("Authorization", "Bearer "+apiKey);
     }
+
+    public ApiRequest(String apiKey, String partnerId) {
+        super();
+        this.put("Authorization", "Bearer "+apiKey);
+        this.put("X-TL-Partner-Id", partnerId);
+    }
 }
