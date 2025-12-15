@@ -6,7 +6,7 @@
 
     <groupId>io.github.matts</groupId>
     <artifactId>java-timelinesai</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 <!--    <version>SNAP</version>-->
     <packaging>jar</packaging>
     <name>Java TimelinesAI SDK</name>
@@ -38,6 +38,13 @@
             <version>1.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

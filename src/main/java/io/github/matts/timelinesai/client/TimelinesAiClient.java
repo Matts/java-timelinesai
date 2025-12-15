@@ -2,6 +2,7 @@ package io.github.matts.timelinesai.client;
 
 import feign.*;
 import feign.codec.ErrorDecoder;
+import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
@@ -40,6 +41,10 @@ public class TimelinesAiClient {
             return getFeignBuilder().target(apiType, baseUrl);
         }
 
+        public <T extends TimelinesAiApi> T createFormDataApi(Class<T> apiType) {
+            return getFormDataBuilder().target(apiType, baseUrl);
+        }
+
         public <T extends TimelinesAiApi> T createApiWithRequestInterceptor(Class<T> apiType, RequestInterceptor requestInterceptor) {
             return getFeignBuilder().requestInterceptor(requestInterceptor).target(apiType, baseUrl);
         }
@@ -51,11 +56,26 @@ public class TimelinesAiClient {
                     .decoder(new JacksonDecoder())
                     .errorDecoder(errorDecoder)
                     .options(options)
-                    .requestInterceptor(new EmailEngineAuthInterceptor());
+                    .requestInterceptor(new EmailEngineAuthInterceptor(true));
+        }
+
+        private Feign.Builder getFormDataBuilder() {
+            return Feign.builder()
+                    .retryer(retryer)
+                    .encoder(new FormEncoder())
+                    .decoder(new JacksonDecoder())
+                    .errorDecoder(errorDecoder)
+                    .options(options)
+                    .requestInterceptor(new EmailEngineAuthInterceptor(false));
         }
 
         public class EmailEngineAuthInterceptor implements RequestInterceptor {
             private static final String API_KEY_PARAM = "apiKey";
+            private final Boolean withContentType;
+
+            public EmailEngineAuthInterceptor(Boolean withContentType) {
+                this.withContentType = withContentType;
+            }
 
             @Override
             public void apply(RequestTemplate template) {
@@ -72,7 +92,9 @@ public class TimelinesAiClient {
 //                }
 
                 template.headerLiteral("Accept", "application/json");
-                template.headerLiteral("Content-Type", "application/json");
+                if(withContentType) {
+                    template.headerLiteral("Content-Type", "application/json");
+                }
             }
         }
     }

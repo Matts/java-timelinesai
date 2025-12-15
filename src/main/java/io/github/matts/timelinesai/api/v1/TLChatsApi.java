@@ -1,16 +1,16 @@
 package io.github.matts.timelinesai.api.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import feign.FeignException;
-import feign.HeaderMap;
-import feign.Param;
-import feign.RequestLine;
+import feign.*;
+import feign.form.FormData;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
 import io.github.matts.timelinesai.model.api.MessageSentResponse;
+import io.github.matts.timelinesai.request.FileUpload;
 import io.github.matts.timelinesai.request.MessageToChat;
 import io.github.matts.timelinesai.request.MessageToJid;
 import io.github.matts.timelinesai.request.MessageToPhone;
 import io.github.matts.timelinesai.responses.ChatListResponse;
+import io.github.matts.timelinesai.responses.FileUploadResponse;
 import io.github.matts.timelinesai.responses.MessageListResponse;
 
 import java.util.HashMap;
