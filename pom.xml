@@ -6,8 +6,8 @@
 
     <groupId>io.github.matts</groupId>
     <artifactId>java-timelinesai</artifactId>
-    <version>0.2.1</version>
-<!--    <version>SNAP</version>-->
+<!--    <version>0.2.1</version>-->
+    <version>SNAP</version>
     <packaging>jar</packaging>
     <name>Java TimelinesAI SDK</name>
     <description>Java TimelinesAI SDK</description>
