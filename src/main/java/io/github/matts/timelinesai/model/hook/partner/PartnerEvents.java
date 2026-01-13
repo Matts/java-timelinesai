@@ -10,8 +10,11 @@ public enum PartnerEvents {
     API_TOKEN_ROTATED("api_token:rotated", ApiTokenRotatedEvent.class),
     WHATSAPP_ACCOUNT_CONNECTED("whatsapp_account:connected", WhatsappAccountConnected.class),
     WHATSAPP_ACCOUNT_DISCONNECTED("whatsapp_account:disconnected", WhatsappAccountDisconnected.class),
-
-
+    WORKSPACE_SEATS_FULL("workspace:seats_full", PartnerEvent.class),
+    WORKSPACE_QUOTA_FULL_MESSAGING("workspace:quota_full:messaging", PartnerEvent.class),
+    WORKSPACE_QUOTA_NEAR_FULL_MESSAGING("workspace:quota_near_full:messaging", PartnerEvent.class),
+    WORKSPACE_QUOTA_FULL_TRANSACTIONS("workspace:quota_full:transactions", PartnerEvent.class),
+    WORKSPACE_QUOTA_FULL_API_CALLS("workspace:quota_full:api_calls", PartnerEvent.class),
     ;
 
     private final String eventType;
