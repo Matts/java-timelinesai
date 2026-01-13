@@ -5,6 +5,7 @@ import feign.Param;
 import feign.RequestLine;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
 import io.github.matts.timelinesai.model.api.WebhookListResponse;
+import io.github.matts.timelinesai.request.CreateUserInWorkspace;
 import io.github.matts.timelinesai.request.CreateWorkspace;
 import io.github.matts.timelinesai.responses.*;
 
@@ -16,6 +17,9 @@ public interface TLPartnersWorkspaceApi extends TimelinesAiApi {
 
     @RequestLine("PATCH /partner/api/v1/workspaces/{workspace_id}")
     CreateWorkspaceResponse updateWorkspace(@HeaderMap Map<String, String> headers, @Param("workspace_id") String workspace_id, CreateWorkspace body);
+
+    @RequestLine("POST /partner/api/v1/workspaces/{workspace_id}/users")
+    CreateUserResponse createUsersInWorkspace(@HeaderMap Map<String, String> headers, @Param("workspace_id") String workspace_id, CreateUserInWorkspace body);
 
     @RequestLine("GET /partner/api/v1/workspaces/{workspace_id}")
     GetWorkspaceResponse getWorkspace(@HeaderMap Map<String, String> headers, @Param("workspace_id") String workspace_id);
