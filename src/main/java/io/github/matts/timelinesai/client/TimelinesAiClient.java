@@ -3,6 +3,7 @@ package io.github.matts.timelinesai.client;
 import feign.*;
 import feign.codec.ErrorDecoder;
 import feign.form.FormEncoder;
+import feign.httpclient.ApacheHttpClient;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
@@ -51,6 +52,7 @@ public class TimelinesAiClient {
 
         private Feign.Builder getFeignBuilder() {
             return Feign.builder()
+                    .client(new ApacheHttpClient())
                     .retryer(retryer)
                     .encoder(new JacksonEncoder())
                     .decoder(new JacksonDecoder())

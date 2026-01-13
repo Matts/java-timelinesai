@@ -6,7 +6,7 @@
 
     <groupId>io.github.matts</groupId>
     <artifactId>java-timelinesai</artifactId>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
 <!--    <version>SNAP</version>-->
     <packaging>jar</packaging>
     <name>Java TimelinesAI SDK</name>
@@ -29,6 +29,12 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-jackson</artifactId>
+            <version>13.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
             <version>13.5</version>
         </dependency>
 
