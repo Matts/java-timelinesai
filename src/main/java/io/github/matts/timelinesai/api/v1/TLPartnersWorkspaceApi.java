@@ -14,6 +14,9 @@ public interface TLPartnersWorkspaceApi extends TimelinesAiApi {
     @RequestLine("POST /partner/api/v1/workspaces")
     CreateWorkspaceResponse createWorkspace(@HeaderMap Map<String, String> headers, CreateWorkspace body);
 
+    @RequestLine("PATCH /partner/api/v1/workspaces/{workspace_id}")
+    CreateWorkspaceResponse updateWorkspace(@HeaderMap Map<String, String> headers, @Param("workspace_id") String workspace_id, CreateWorkspace body);
+
     @RequestLine("GET /partner/api/v1/workspaces/{workspace_id}")
     GetWorkspaceResponse getWorkspace(@HeaderMap Map<String, String> headers, @Param("workspace_id") String workspace_id);
 
