@@ -15,4 +15,5 @@ public class MessageToChat {
     private String text;
     private String file_uid;
     private String attachment_template_id;
+    private String reply_to;
 }
