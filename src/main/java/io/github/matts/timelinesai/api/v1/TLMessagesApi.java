@@ -4,6 +4,7 @@ import feign.FeignException;
 import feign.HeaderMap;
 import feign.Param;
 import io.github.matts.timelinesai.model.api.MessageSentResponse;
+import io.github.matts.timelinesai.model.api.MessageStatusHistoryResponse;
 import io.github.matts.timelinesai.request.FileUpload;
 import io.github.matts.timelinesai.request.MessageToJid;
 import io.github.matts.timelinesai.responses.FileUploadResponse;
@@ -27,6 +28,9 @@ public interface TLMessagesApi extends TimelinesAiApi {
 
     @RequestLine("POST /integrations/api/files")
     FileUploadResponse uploadFile(@HeaderMap Map<String, String> headers, FileUpload body);
+
+    @RequestLine("GET /integrations/api/messages/{message_uid}/status_history")
+    MessageStatusHistoryResponse getMessageStatusHistory(@HeaderMap Map<String, String> headers, @Param("message_uid") String message_uid);
 
     default MessageSentResponse sendMessage(Map<String, String> headers, MessageToPhone body) {
         try {
