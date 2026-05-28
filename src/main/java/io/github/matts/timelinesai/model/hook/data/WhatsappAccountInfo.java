@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WhatsappAccountInfo {
+    private String whatsapp_account_wid;
     private String full_name;
     private String email;
     private String phone;

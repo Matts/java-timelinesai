@@ -7,6 +7,7 @@ import io.github.matts.timelinesai.model.api.MessageSentResponse;
 import io.github.matts.timelinesai.model.api.MessageStatusHistoryResponse;
 import io.github.matts.timelinesai.request.FileUpload;
 import io.github.matts.timelinesai.request.MessageToJid;
+import io.github.matts.timelinesai.request.ReactionUpdate;
 import io.github.matts.timelinesai.responses.FileUploadResponse;
 import feign.RequestLine;
 import io.github.matts.timelinesai.api.TimelinesAiApi;
@@ -22,6 +23,9 @@ public interface TLMessagesApi extends TimelinesAiApi {
 
     @RequestLine("GET /integrations/api/messages/{message_uid}")
     MessageInfoResponse getMessageDetails(@HeaderMap Map<String, String> headers, @Param("message_uid") String message_uid);
+
+    @RequestLine("PATCH /integrations/api/messages/{message_uid}/reactions")
+    MessageInfoResponse patchMessageReaction(@HeaderMap Map<String, String> headers, @Param("message_uid") String message_uid, ReactionUpdate body);
 
     @RequestLine("POST /integrations/api/messages/to_jid")
     MessageSentResponse sendMessageInternal(@HeaderMap Map<String, String> headers, MessageToJid body);
