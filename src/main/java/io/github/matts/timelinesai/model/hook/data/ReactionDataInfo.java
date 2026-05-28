@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReactionDataInfo {
-    private UUID message_uid;
+    private String message_uid;
     private ReactionAction action;
     private String emoji;
     private String timestamp;
