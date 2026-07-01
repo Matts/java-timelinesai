@@ -1,5 +1,6 @@
 package io.github.matts.timelinesai.model.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,9 @@ public class MessageSentResponse {
     private String message;
     private HashMap<String,String> data;
     private List<HashMap<String,Object>> errors;
+
+    @JsonProperty("error_code")
+    private String errorCode;
 
     public MessageSentResponse(String status, String message) {
         this.status = status;
