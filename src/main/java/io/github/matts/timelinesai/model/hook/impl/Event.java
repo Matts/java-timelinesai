@@ -1,6 +1,5 @@
 package io.github.matts.timelinesai.model.hook.impl;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.github.matts.timelinesai.model.hook.data.WhatsappAccountInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +11,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public abstract class Event {
-    @JsonDeserialize(using = EventTypeDeserializer.class)
+    // event_type deserializes via EventType's @JsonCreator (Jackson 2 & 3 compatible).
     private EventType event_type;
 }

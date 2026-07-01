@@ -1,5 +1,6 @@
 package io.github.matts.timelinesai.model.hook.partner;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.github.matts.timelinesai.model.hook.partner.events.ApiTokenRotatedEvent;
 import io.github.matts.timelinesai.model.hook.partner.events.WhatsappAccountConnected;
 import io.github.matts.timelinesai.model.hook.partner.events.WhatsappAccountDisconnected;
@@ -25,6 +26,10 @@ public enum PartnerEvents {
         this.eventClass = eventClass;
     }
 
+    // Jackson factory: maps the wire value (e.g. "whatsapp_account:connected") to the enum.
+    // com.fasterxml.jackson.annotation is honored by both Jackson 2 and Jackson 3; replaces the
+    // Jackson-2-only PartnerEventTypeDeserializer that Jackson 3 ignored.
+    @JsonCreator
     public static PartnerEvents fromString(String eventType) {
         for (PartnerEvents event : PartnerEvents.values()) {
             if (event.getEventType().equalsIgnoreCase(eventType)) {

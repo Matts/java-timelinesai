@@ -1,5 +1,7 @@
 package io.github.matts.timelinesai.model.hook.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum EventType {
     MESSAGE_NEW("message:new"),
     MESSAGE_SENT_NEW("message:sent:new"),
@@ -28,6 +30,11 @@ public enum EventType {
         return value;
     }
 
+    // Jackson factory: maps the colon-delimited wire value (e.g. "message:new") to the enum.
+    // Annotation from com.fasterxml.jackson.annotation, which is honored by both Jackson 2 and
+    // Jackson 3 (the annotations package was retained under Boot 4). Replaces the old Jackson-2-only
+    // EventTypeDeserializer, which Jackson 3's web converter silently ignored.
+    @JsonCreator
     public static EventType fromValue(String value) {
         for (EventType eventType : EventType.values()) {
             if (eventType.getValue().equals(value)) {
